@@ -13,9 +13,9 @@ export default {
     'assets': path.resolve(path.dirname(''), 'src/assets'),
     'images': path.resolve(path.dirname(''), 'src/assets/images'),
   },
-  root: './src/',
   mount: {
-    src: '/', // without this snowpack is telling: [21:54:38] [snowpack] [404] Not Found (/) (x2)
+    public: { url: '/', static: true },
+    src: { url: '/dist' },
   },
   plugins: [
     '@snowpack/plugin-sass',
@@ -26,7 +26,7 @@ export default {
         preserveSourceFiles: false,
   
         // equivalent to inputOptions.input from Rollup
-        entrypoints: "build/index.jsx",
+        entrypoints: "build/dist/index.js",
   
         extendConfig: (config) => {
           // https://rollupjs.org/guide/en/#outputoptions-object
